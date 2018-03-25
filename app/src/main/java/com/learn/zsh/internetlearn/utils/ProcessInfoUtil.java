@@ -3,7 +3,6 @@ package com.learn.zsh.internetlearn.utils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.learn.zsh.internetlearn.NetLogs;
 import com.learn.zsh.internetlearn.contents.ContentValue;
 
 import org.apache.http.HttpEntity;

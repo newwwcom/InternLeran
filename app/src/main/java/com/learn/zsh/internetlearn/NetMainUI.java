@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.learn.zsh.internetlearn.extension.UIExtension;
+import com.learn.zsh.internetlearn.utils.NetLogs;
 
 import java.util.HashSet;
 import java.util.Set;

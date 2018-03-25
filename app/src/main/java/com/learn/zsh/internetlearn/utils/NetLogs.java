@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn;
+package com.learn.zsh.internetlearn.utils;
 
 import android.app.Activity;
 import android.util.Log;

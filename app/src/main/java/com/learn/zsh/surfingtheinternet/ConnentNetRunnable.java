@@ -1,6 +1,6 @@
 package com.learn.zsh.surfingtheinternet;
 
-import com.learn.zsh.internetlearn.NetLogs;
+import com.learn.zsh.internetlearn.utils.NetLogs;
 import com.learn.zsh.internetlearn.contents.ConnInternetType;
 import com.learn.zsh.internetlearn.contents.ContentValue;
 import com.learn.zsh.surfingtheinternet.httpclientconn.HttpClientUtil;

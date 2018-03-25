@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.learn.zsh.internetlearn.NetLogs;
+import com.learn.zsh.internetlearn.utils.NetLogs;
 import com.learn.zsh.internetlearn.R;
 import com.learn.zsh.internetlearn.utils.ProcessInfoUtil;
 import com.learn.zsh.surfingtheinternet.httpclientconn.HttpClientUtil;

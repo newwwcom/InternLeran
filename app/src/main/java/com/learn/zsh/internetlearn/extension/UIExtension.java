@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.ImageView;
 
-import com.learn.zsh.internetlearn.NetLogs;
+import com.learn.zsh.internetlearn.utils.NetLogs;
 import com.learn.zsh.internetlearn.R;
 import com.learn.zsh.internetlearn.contents.ButtonType;
 import com.learn.zsh.internetlearn.contents.ConnInternetType;
