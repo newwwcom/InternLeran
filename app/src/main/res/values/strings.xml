@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">InternetLearn</string>
+    <string name="app_name">网络测试</string>
+    <string name="web_dbg_mothod">网络请求方式调试</string>
+    <string name="httpclient_dbg">HttpClient 网络连接调试</string>
+    <string name="httpclient">httpclient</string>
+    <string name="default_web">https://www.baidu.com</string>
+    <string name="get_debug">get测试</string>
+    <string name="post_debug">post测试</string>
+    <string name="down_image">图片下载</string>
+    <string name="image_down_for_gallery">多图下载</string>
+    <string name="down_images">下载图片</string>
+    <string name="set_image">设置图片</string>
+    <string name="set_bitmap">设置图片</string>
+    <string name="user_defind_view">自定义View</string>
+    <string name="frist_button">第一个Button</string>
+    <string name="second_button">第二个Button</string>
 </resources>
