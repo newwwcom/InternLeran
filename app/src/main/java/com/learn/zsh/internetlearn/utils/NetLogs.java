@@ -54,7 +54,7 @@ public class NetLogs {
 
     private static boolean logInfoInvalid(String tag, String msg){
         boolean infoIsInvalid = false;
-        if(tag != null || msg != null){
+        if(tag != null && msg != null){
             return infoIsInvalid;
         }
         return true;
