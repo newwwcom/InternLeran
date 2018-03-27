@@ -14,7 +14,7 @@ import com.learn.zsh.internetlearn.utils.NetLogs;
  */
 
 /*在View类中有四个构造函数，涉及到多个参数，
- * Context：上线文，这个不用多说
+ * Context：上下文，这个不用多说
  * AttributeSet attrs ： 从xml中定义的参数
  * int defStyleAttr ：主题中优先级最高的属性
  * int defStyleRes  ： 优先级次之的内置于View的style
