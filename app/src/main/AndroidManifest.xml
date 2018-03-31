@@ -44,6 +44,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.learn.zsh.internetlearn.debugpage.ServiceDebugPage">
+            <intent-filter>
+                <action android:name="zsh.debug.action.SERVICEPAGE_PC" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".service.BackgroundService"
+            android:enabled="true"
+            android:exported="true"/>
+
+        <service android:name=".service.Background2Service"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>

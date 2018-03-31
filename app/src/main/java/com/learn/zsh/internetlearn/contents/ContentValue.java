@@ -1,5 +1,8 @@
 package com.learn.zsh.internetlearn.contents;
 
+import com.learn.zsh.internetlearn.service.Background2Service;
+import com.learn.zsh.internetlearn.service.BackgroundService;
+
 /**
  * Created by zhoushaohua on 2018/3/25.
  */
@@ -8,6 +11,7 @@ public class ContentValue {
     public static final String HTTPCLINETACTION = "zsh.debug.action.HTTPCLIENTDEBUG_PC";
     public static final String IMAGEDOWNACTION = "zsh.debug.action.IMAGEDOWNDEBUG_PC";
     public static final String USERDEFINDACTION = "zsh.debug.action.USERDEFINDVIEW_PC";
+    public static final String SERVICEDEBUGACTION = "zsh.debug.action.SERVICEPAGE_PC";
     public static final String DBG_WEB_BAIDU = "https://www.baidu.com";
     public static final String DBG_WEB_TAOBAO_IP = "http://ip.taobao.com/ipSearch.html";
     public static final String DBG_WEB_BAUDU_IMAGE = "https://image.baidu.com/search/down?tn=download&ipn=dwnl&word=download&ie=utf8&fr=result&url=http%3A%2F%2Fpic21.photophoto.cn%2F20111021%2F0034034817592972_b.jpg&thumburl=https%3A%2F%2Fss1.bdstatic.com%2F70cFuXSh_Q1YnxGkpoWK1HF6hhy%2Fit%2Fu%3D2023318863%2C2589403806%26fm%3D27%26gp%3D0.jpg";
@@ -15,6 +19,9 @@ public class ContentValue {
     public static final String CONTENTCHARSET = "UTF-8";
     public static final String DEFAULT_TIPS = "Get nothing.";
     public static final int CONN_SUCCES = 200;
+
+    public static final Class BACKGROUND1_SERVICE = BackgroundService.class;
+    public static final Class BACKGROUND2_SERVICE = Background2Service.class;
 
     public static final int REQUEST_TIMEOUT = 1500;
     public static final int CONN_TIMEOUT = 1500;

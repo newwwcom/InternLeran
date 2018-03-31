@@ -1,7 +1,12 @@
 package com.learn.zsh.internetlearn.utils;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.util.Log;
+
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by zhoushaohua on 2018/3/25.
@@ -66,5 +71,23 @@ public class NetLogs {
 
     public static void printfTaskId(String tag, Activity context){
         Log.d(tag, " TaskId: " + context.getTaskId() + " hasCode:" + context.hashCode());
+    }
+
+    public static final String getProcessName(String tag, Activity context){
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List list = am.getRunningAppProcesses();
+        Iterator iterator = list.iterator();
+        while (iterator.hasNext()) {
+            ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo) (iterator.next());
+            try {
+                Log.d(tag, "GetProcessName Pid: " + info.pid);
+                if(info.pid == context.getTaskId()){
+                    return info.processName;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }

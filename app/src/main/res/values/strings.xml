@@ -18,4 +18,13 @@
     <string name="user_defind_view">自定义View</string>
     <string name="frist_button">第一个Button</string>
     <string name="second_button">第二个Button</string>
+    <string name="service_life_debug">服务调试</string>
+    <string name="stop_service1">停止服务1</string>
+    <string name="start_service2">开启服务2</string>
+    <string name="start_service1">开启服务1</string>
+    <string name="stop_service2">停止服务2</string>
+    <string name="unbind_service2">解绑服务2</string>
+    <string name="bind_service2">绑定服务2</string>
+    <string name="unbind_service1">解绑服务1</string>
+    <string name="bind_service1">绑定服务1</string>
 </resources>

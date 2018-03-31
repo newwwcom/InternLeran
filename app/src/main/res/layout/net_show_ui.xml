@@ -51,6 +51,14 @@
             android:layout_below="@+id/textView"
             android:layout_toEndOf="@+id/httpclient_dbg"
             android:text="@string/user_defind_view" />
+
+        <Button
+            android:id="@+id/servicedebug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/user_defind"
+            android:layout_below="@+id/user_defind"
+            android:text="@string/service_life_debug" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

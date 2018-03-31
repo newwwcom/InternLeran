@@ -3,6 +3,8 @@ package com.learn.zsh.internetlearn.extension;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.MutableContextWrapper;
+import android.content.ServiceConnection;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ public class UIExtension implements View.OnClickListener {
     private static View mParentView;
     private EditText mWebInput;
     private ImageView mImage;
+    private ServiceConnection mConn;
     public UIExtension(Context context){
         this.mContext = context;
     }
@@ -45,6 +48,10 @@ public class UIExtension implements View.OnClickListener {
         while(iterator.hasNext()){
             iterator.next().setOnClickListener(this);
         }
+    }
+
+    public void setConn(ServiceConnection conn){
+        this.mConn = conn;
     }
 
     @Override
@@ -63,17 +70,56 @@ public class UIExtension implements View.OnClickListener {
                 dealAction(ButtonType.CONN_BY_HTPCNT_POST);
                 break;
             case R.id.down_image:
-                NetLogs.i(TAG, "dbg the button");
+                NetLogs.i(TAG, "dbg the button.");
                 dealAction(ButtonType.IMAGE_DOWN);
                 break;
             case R.id.images_down:
-                NetLogs.i(TAG, "dbg the button");
+                NetLogs.i(TAG, "dbg the button.");
                 dealAction(ButtonType.IMAGES_DOWN_GALLERY);
                 break;
             case R.id.user_defind:
-                NetLogs.i(TAG, "dbg the user_defind button");
+                NetLogs.i(TAG, "dbg the user_defind button.");
                 dealAction(ButtonType.USERDEFINED_VIEW_TEST);
                 break;
+            case R.id.servicedebug:
+                NetLogs.i(TAG, "dbg the service life.");
+                dealAction(ButtonType.SERVICE_DEPAGE);
+                break;
+
+            case R.id.start_ser1:
+                NetLogs.i(TAG, "start service1.");
+                startService(ContentValue.BACKGROUND1_SERVICE);
+                break;
+            case R.id.stop_ser1:
+                NetLogs.i(TAG, "stop service1.");
+                stopService(ContentValue.BACKGROUND1_SERVICE);
+                break;
+            case R.id.start_ser2:
+                NetLogs.i(TAG, "start service2.");
+                startService(ContentValue.BACKGROUND2_SERVICE);
+                break;
+            case R.id.stop_ser2:
+                NetLogs.i(TAG, "stop service2.");
+                stopService(ContentValue.BACKGROUND2_SERVICE);
+                break;
+
+            case R.id.bindSer1:
+                NetLogs.i(TAG, "bind service1.");
+                bindService(ContentValue.BACKGROUND1_SERVICE);
+                break;
+            case R.id.unBindser1:
+                NetLogs.i(TAG, "unbind service1.");
+                unBindService(ContentValue.BACKGROUND1_SERVICE);
+                break;
+            case R.id.bindser2:
+                NetLogs.i(TAG, "bind service2.");
+                bindService(ContentValue.BACKGROUND2_SERVICE);
+                break;
+            case R.id.unbindser2:
+                NetLogs.i(TAG, "unbind service2.");
+                unBindService(ContentValue.BACKGROUND2_SERVICE);
+                break;
+
             default:
                 break;
         }
@@ -86,6 +132,9 @@ public class UIExtension implements View.OnClickListener {
                 break;
             case IMAGES_DOWN_GALLERY:
                 startDbgPage(mContext, ContentValue.IMAGEDOWNACTION);
+                break;
+            case SERVICE_DEPAGE:
+                startDbgPage(mContext, ContentValue.SERVICEDEBUGACTION);
                 break;
             case USERDEFINED_VIEW_TEST:
                 startDbgPage(mContext, ContentValue.USERDEFINDACTION);
@@ -115,6 +164,47 @@ public class UIExtension implements View.OnClickListener {
             intent.setAction(action/*ContentValue.HTTPCLINETACTION*/);
             context.startActivity(intent);
         }catch (ActivityNotFoundException e){
+            NetLogs.e(TAG, e.toString());
+        }
+    }
+
+
+    private void startService(Class<?> cls){
+        if(mContext == null){
+            NetLogs.e(TAG, "context is null, please check the context.");
+            return;
+        }
+        Intent intent = new Intent(mContext, cls);
+        mContext.startService(intent);
+    }
+
+    private void stopService(Class<?> cls){
+        if(mContext == null){
+            NetLogs.e(TAG, "context is null, please check the context.");
+            return;
+        }
+        Intent intent = new Intent(mContext, cls);
+        mContext.stopService(intent);
+    }
+
+    private void bindService(Class<?> cls){
+        if(mContext == null || mConn == null){
+            NetLogs.e(TAG, "context is null, please check the context.");
+            return;
+        }
+        Intent intent = new Intent(mContext, cls);
+        mContext.bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+    }
+
+    private void unBindService(Class<?> cls){
+        if(mContext == null || mConn == null){
+            NetLogs.e(TAG, "context is null, please check the context.");
+            return;
+        }
+        Intent intent = new Intent(mContext, cls);
+        try {
+            mContext.unbindService(mConn);
+        } catch (Exception e) {
             NetLogs.e(TAG, e.toString());
         }
     }
