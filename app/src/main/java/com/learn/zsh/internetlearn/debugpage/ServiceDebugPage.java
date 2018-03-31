@@ -8,11 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.learn.zsh.internetlearn.R;
+import com.learn.zsh.internetlearn.contents.ContentValue;
 import com.learn.zsh.internetlearn.extension.UIExtension;
 import com.learn.zsh.internetlearn.service.ServiceBinder;
 import com.learn.zsh.internetlearn.utils.NetLogs;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -25,10 +28,24 @@ public class ServiceDebugPage extends AppCompatActivity {
     private Button mStartService1, mStopService1, mStartService2, mStopService2;
     private Button mBindService1, mUnbindService1, mBindService2, mUnbindService2;
 
+    private Map<String, ServiceConnection> mConnMap = new HashMap<>();
     private Set<Button> mButtonSet = new HashSet<>();
     private ServiceBinder mBinder;
 
     private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mBinder = (ServiceBinder) service;
+            NetLogs.d(TAG, "ServiceDebugPage onServiceConnected and mBinder: " + mBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
+    private ServiceConnection conn2 = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mBinder = (ServiceBinder) service;
@@ -73,7 +90,10 @@ public class ServiceDebugPage extends AppCompatActivity {
         if(mBindService2 != null) mButtonSet.add(mBindService2);
         if(mUnbindService2 != null) mButtonSet.add(mUnbindService2);
 
-        mUIExtension.setConn(conn);
+        mConnMap.put(ContentValue.BACKGROUND1_SERVICE.getName(), conn);
+        mConnMap.put(ContentValue.BACKGROUND2_SERVICE.getName(), conn2);
+        //mUIExtension.setConn(conn);
+        mUIExtension.setConnMap(mConnMap);
         mUIExtension.setViewOnClickListener(mButtonSet);
 
     }

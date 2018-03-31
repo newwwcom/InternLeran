@@ -20,6 +20,7 @@ import com.learn.zsh.surfingtheinternet.ConnentNetRunnable;
 import com.learn.zsh.surfingtheinternet.MediaDownTask;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -30,9 +31,10 @@ public class UIExtension implements View.OnClickListener {
     private static final String TAG = NetLogs.NETLOG + UIExtension.class.getName();
     private static Context mContext;
     private static View mParentView;
-    private EditText mWebInput;
-    private ImageView mImage;
+    //private EditText mWebInput;
+    //private ImageView mImage;
     private ServiceConnection mConn;
+    private Map<String, ServiceConnection> mConnMap;
     public UIExtension(Context context){
         this.mContext = context;
     }
@@ -52,6 +54,10 @@ public class UIExtension implements View.OnClickListener {
 
     public void setConn(ServiceConnection conn){
         this.mConn = conn;
+    }
+
+    public void setConnMap(Map map){
+        this.mConnMap = map;
     }
 
     @Override
@@ -188,22 +194,25 @@ public class UIExtension implements View.OnClickListener {
     }
 
     private void bindService(Class<?> cls){
-        if(mContext == null || mConn == null){
+        if(mContext == null || mConnMap.isEmpty()){
             NetLogs.e(TAG, "context is null, please check the context.");
             return;
         }
         Intent intent = new Intent(mContext, cls);
-        mContext.bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+        ServiceConnection conn = mConnMap.get(cls.getName());
+        NetLogs.i(TAG, "bindService conn : " + conn);
+        mContext.bindService(intent, conn, Context.BIND_AUTO_CREATE);
     }
 
     private void unBindService(Class<?> cls){
-        if(mContext == null || mConn == null){
+        if(mContext == null || mConnMap.isEmpty()){
             NetLogs.e(TAG, "context is null, please check the context.");
             return;
         }
         Intent intent = new Intent(mContext, cls);
+        ServiceConnection conn = mConnMap.get(cls.getName());
         try {
-            mContext.unbindService(mConn);
+            mContext.unbindService(conn);
         } catch (Exception e) {
             NetLogs.e(TAG, e.toString());
         }
