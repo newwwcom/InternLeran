@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import com.learn.zsh.internetlearn.extension.UIExtension;
 import com.learn.zsh.internetlearn.utils.NetLogs;
+import com.learn.zsh.mylibrary.devkit.ProcessorFactory;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +16,7 @@ public class NetMainUI extends AppCompatActivity {
     private Button mHttpClientDbg, mImageDown, mUserDefined;
     private UIExtension uiExtension;
     private Set<Button> buttonSet = new HashSet<>();
+    ProcessorFactory r;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

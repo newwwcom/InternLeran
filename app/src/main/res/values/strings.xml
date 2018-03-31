@@ -1,4 +1,8 @@
 <resources>
+    <!--
+        一些小的技巧：
+        选择要包裹的代码块，然后按下ctrl + alt + t
+    -->
     <string name="app_name">网络测试</string>
     <string name="web_dbg_mothod">网络请求方式调试</string>
     <string name="httpclient_dbg">HttpClient 网络连接调试</string>
