@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.HttpClientDebugPage">
+        <activity android:name="com.learn.zsh.internetlearn.debugpage.HttpClientDebugPage"
+            android:label="@string/httpclient_dbg">
             <intent-filter>
                 <action android:name="zsh.debug.action.HTTPCLIENTDEBUG_PC" />
 
@@ -29,7 +30,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.ImageDownDebugPage">
+        <activity android:name="com.learn.zsh.internetlearn.debugpage.ImageDownDebugPage"
+            android:label="@string/image_down_for_gallery">
             <intent-filter>
                 <action android:name="zsh.debug.action.IMAGEDOWNDEBUG_PC" />
 
@@ -37,7 +39,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.DefinedViewDbg">
+        <activity android:name="com.learn.zsh.internetlearn.debugpage.DefinedViewDbg"
+            android:label="@string/user_defind_view">
             <intent-filter>
                 <action android:name="zsh.debug.action.USERDEFINDVIEW_PC" />
 
@@ -45,7 +48,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.ServiceDebugPage">
+        <activity android:name="com.learn.zsh.internetlearn.debugpage.ServiceDebugPage"
+            android:label="@string/service_life_debug">
             <intent-filter>
                 <action android:name="zsh.debug.action.SERVICEPAGE_PC" />
 

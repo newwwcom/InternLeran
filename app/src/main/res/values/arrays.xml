@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="debug_menu">
+        <item>"网络编程"</item>
+        <item>"自定义View"</item>
+        <item>"服务调试"</item>
+    </string-array>
+</resources>

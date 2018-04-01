@@ -30,7 +30,7 @@ public class ContentValue {
     public static final String IP_FOR_PAIRNAME = "ip";
     public static final String IP_OF_PAIRVALUE = "112.64.60.227";
 
-    public static final  String[] IMAGE_URL_LIST = new String[]{
+    public static final String[] IMAGE_URL_LIST = new String[]{
             "http://img03.sogoucdn.com/app/a/07/e023d74b837f1504e450a9148bc9e62d",
             "http://img3.tuniucdn.com/images/2011-03-29/L/LFXLzoSGG9g753SH.jpg",
             "http://pic19.nipic.com/20120324/3484432_092618805000_2.jpg",
