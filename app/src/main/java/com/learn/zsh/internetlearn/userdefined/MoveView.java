@@ -6,6 +6,8 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Scroller;
 
 import com.learn.zsh.internetlearn.utils.NetLogs;
 
@@ -23,6 +25,8 @@ import com.learn.zsh.internetlearn.utils.NetLogs;
  */
 public class MoveView extends View {
     private static final String TAG = NetLogs.NETLOG + MoveView.class.getName();
+
+    private Scroller mScroller;
     //通过JAVA代码直接实例化的，使用该构造方法（View v = new View(this);）
     public MoveView(Context context) {
         this(context, null);
@@ -34,6 +38,7 @@ public class MoveView extends View {
     //如果在XML文件中引用，又使用了样式属性（其中的优先级：xml定义>style>theme）时，使用该构造方法
     public MoveView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mScroller = new Scroller(context);
     }
 
     private int lastX, lastY;
@@ -63,7 +68,8 @@ public class MoveView extends View {
                 //layoutParams.verticalBias = offsetY;
                 //setLayoutParams(layoutParams);
 
-                ((View)getParent()).scrollBy(-offsetX, -offsetY);
+                //((View)getParent()).scrollBy(-offsetX, -offsetY);
+                smoothScrollerTo(-offsetX, 0);
 
                 break;
             case MotionEvent.ACTION_UP:
@@ -74,6 +80,22 @@ public class MoveView extends View {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+        if(mScroller.computeScrollOffset()){
+            ((ViewGroup) getParent()).scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            invalidate();  //调用该方法不断的重绘
+        }
+    }
+
+    public void smoothScrollerTo(int destX, int destY){
+        int scrollX = getScrollX();
+        int lastX = destX - scrollX;
+        mScroller.startScroll(scrollX, 0, lastX, 0, 2000);
+        invalidate();
     }
 }
 
