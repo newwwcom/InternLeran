@@ -11,12 +11,11 @@ import com.learn.zsh.mylibrary.devkit.ProcessorFactory;
 import java.util.HashSet;
 import java.util.Set;
 
-public class NetMainUI extends AppCompatActivity {
+public class NetMainUI extends BaseNetUIActivity {
     private static final String TAG = NetLogs.NETLOG + NetMainUI.class.getSimpleName();
     private Button mHttpClientDbg, mImageDown, mUserDefined, mServiceDebug;
     private UIExtension uiExtension;
     private Set<Button> buttonSet = new HashSet<>();
-    //ProcessorFactory r;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

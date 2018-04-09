@@ -2,6 +2,7 @@
     <!--
         一些小的技巧：
         选择要包裹的代码块，然后按下ctrl + alt + t
+        第一行代码的源码下载github路径:https://github.com/newcaoguo/booksource
     -->
     <string name="app_name">网络测试</string>
     <string name="web_dbg_mothod">网络请求方式调试</string>

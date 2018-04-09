@@ -34,17 +34,6 @@ public class MenuDebugAdapter extends ArrayAdapter<String> implements AdapterVie
         NetLogs.d(TAG, "MenuDebugAdapter.");
     }
 
-
-    /*public MenuDebugAdapter(@NonNull Context context, int resource, String[] textViewResource) {
-        super(context, resource, textViewResourceId);
-        this.mContext = context;
-        this.mResourceViewId = resource;
-        mResource = textViewResource;
-        NetLogs.d(TAG, "MenuDebugAdapter.");
-    }*/
-
-
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -53,7 +42,7 @@ public class MenuDebugAdapter extends ArrayAdapter<String> implements AdapterVie
             row = LayoutInflater.from(mContext).inflate(mResourceViewId, parent, false);
         }
         TextView menu = row.findViewById(R.id.menu_item);
-        String itemText = getItem(position);//mResource[position];
+        String itemText = getItem(position);
         NetLogs.d(TAG, "get the itemText : " + itemText);
         menu.setText(itemText);
         return row;

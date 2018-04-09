@@ -3,13 +3,10 @@ package com.learn.zsh.internetlearn.extension;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.MutableContextWrapper;
 import android.content.ServiceConnection;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Gallery;
-import android.widget.ImageView;
 
 import com.learn.zsh.internetlearn.utils.NetLogs;
 import com.learn.zsh.internetlearn.R;
