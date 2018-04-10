@@ -29,6 +29,9 @@
     <string name="unbind_service1">解绑服务1</string>
     <string name="bind_service1">绑定服务1</string>
     <string name="item_ui">菜单选项</string>
+    <string name="fragment_ui_show">Fragment ui show</string>
+    <string name="fragment_debug">Fragment</string>
+    <string name="fragement">碎片调试</string>
 
 </resources>
 

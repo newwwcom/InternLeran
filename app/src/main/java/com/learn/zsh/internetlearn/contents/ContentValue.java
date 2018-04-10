@@ -12,6 +12,7 @@ public class ContentValue {
     public static final String IMAGEDOWNACTION = "zsh.debug.action.IMAGEDOWNDEBUG_PC";
     public static final String USERDEFINDACTION = "zsh.debug.action.USERDEFINDVIEW_PC";
     public static final String SERVICEDEBUGACTION = "zsh.debug.action.SERVICEPAGE_PC";
+    public static final String FRAGMENTDEBUGACTION = "zsh.debug.action.FRAGMENT_PC";
     public static final String DBG_WEB_BAIDU = "https://www.baidu.com";
     public static final String DBG_WEB_TAOBAO_IP = "http://ip.taobao.com/ipSearch.html";
     public static final String DBG_WEB_BAUDU_IMAGE = "https://image.baidu.com/search/down?tn=download&ipn=dwnl&word=download&ie=utf8&fr=result&url=http%3A%2F%2Fpic21.photophoto.cn%2F20111021%2F0034034817592972_b.jpg&thumburl=https%3A%2F%2Fss1.bdstatic.com%2F70cFuXSh_Q1YnxGkpoWK1HF6hhy%2Fit%2Fu%3D2023318863%2C2589403806%26fm%3D27%26gp%3D0.jpg";

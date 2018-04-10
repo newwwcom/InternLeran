@@ -88,6 +88,10 @@ public class UIExtension implements View.OnClickListener {
                 NetLogs.i(TAG, "dbg the service life.");
                 dealAction(ButtonType.SERVICE_DEPAGE);
                 break;
+            case R.id.fragme_dbg:
+                NetLogs.i(TAG, "dbg the fragment.");
+                dealAction(ButtonType.FRAGMENT_DEPAGE);
+                break;
 
             case R.id.start_ser1:
                 NetLogs.i(TAG, "start service1.");
@@ -151,6 +155,10 @@ public class UIExtension implements View.OnClickListener {
             case IMAGE_DOWN:
                 //connNetThreadRun(ConnInternetType.GET_MEDIA_FILE);
                 downMediaFileTask();
+                break;
+            case FRAGMENT_DEPAGE:
+                //connNetThreadRun(ConnInternetType.GET_MEDIA_FILE);
+                startDbgPage(mContext, ContentValue.FRAGMENTDEBUGACTION);
                 break;
             default:
                 break;

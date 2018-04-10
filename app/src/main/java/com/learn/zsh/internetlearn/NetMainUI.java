@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class NetMainUI extends BaseNetUIActivity {
     private static final String TAG = NetLogs.NETLOG + NetMainUI.class.getSimpleName();
-    private Button mHttpClientDbg, mImageDown, mUserDefined, mServiceDebug;
+    private Button mHttpClientDbg, mImageDown, mUserDefined, mServiceDebug, mFragmentDebug;
     private UIExtension uiExtension;
     private Set<Button> buttonSet = new HashSet<>();
     @Override
@@ -46,6 +46,9 @@ public class NetMainUI extends BaseNetUIActivity {
 
         mServiceDebug = findViewById(R.id.servicedebug);
         if(mServiceDebug != null) buttonSet.add(mServiceDebug);
+
+        mFragmentDebug = findViewById(R.id.fragme_dbg);
+        if(mFragmentDebug != null) buttonSet.add(mFragmentDebug);
 
         uiExtension.setViewOnClickListener(buttonSet);
     }

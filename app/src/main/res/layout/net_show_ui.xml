@@ -59,6 +59,16 @@
             android:layout_alignStart="@+id/user_defind"
             android:layout_below="@+id/user_defind"
             android:text="@string/service_life_debug" />
+
+        <Button
+            android:id="@+id/fragme_dbg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/user_defind"
+            android:layout_alignBottom="@+id/user_defind"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/user_defind"
+            android:text="@string/fragement" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -64,6 +64,15 @@
         <service android:name=".service.Background2Service"
             android:enabled="true"
             android:exported="true"/>
+        <activity android:name=".debugpage.FragmentLearnUI"
+            android:label="@string/fragment_debug">
+            <intent-filter>
+                <action android:name="zsh.debug.action.FRAGMENT_PC" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
