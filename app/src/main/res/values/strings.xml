@@ -32,6 +32,9 @@
     <string name="fragment_ui_show">Fragment ui show</string>
     <string name="fragment_debug">Fragment</string>
     <string name="fragement">碎片调试</string>
+    <string name="talk_view">消息</string>
+    <string name="contacts_view">联系人</string>
+    <string name="something_view">动态</string>
 
 </resources>
 

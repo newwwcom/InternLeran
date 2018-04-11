@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/bar_select_container"
+    android:orientation="horizontal">
+
+    <!--
+    tools:textAlignment="center"  为什么设置无效？AndroidStudio中生效，在测试机红米Note4上不能生效！！
+    有2种方法可以设置TextView文字居中：
+
+    一：在xml文件设置：android:gravity="center"
+
+    二：在程序中设置：m_TxtTitle.setGravity(Gravity.CENTER);
+    备注：android:gravity和android:layout_gravity的区别在于前者对控件内部操作，后者是对整个控件操作。
+
+    例如：android:gravity="center"是对textView中文字居中
+    android:layout_gravity="center"是对textview控件在整个布局中居中
+
+    这就很容易理解，出现"layout"就是控件对整个布局的操作
+    -->
+    <RadioButton
+        android:id="@+id/radio_talkview"
+        style="@style/radio_button_style"
+        android:text="@string/talk_view" />
+
+    <RadioButton
+        android:id="@+id/radio_contacts"
+        style="@style/radio_button_style"
+        android:text="@string/contacts_view" />
+
+    <RadioButton
+        android:id="@+id/radio_more"
+        style="@style/radio_button_style"
+        android:text="@string/something_view" />
+</RadioGroup>

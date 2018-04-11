@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="radio_button_style">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/select_bar_height</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/bar_button_background</item>
+        <item name="android:layout_margin">1dip</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>
