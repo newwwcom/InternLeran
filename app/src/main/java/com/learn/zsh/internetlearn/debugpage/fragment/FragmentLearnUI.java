@@ -2,6 +2,8 @@ package com.learn.zsh.internetlearn.debugpage.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
 
 import com.learn.zsh.internetlearn.R;
 import com.learn.zsh.internetlearn.utils.NetLogs;
@@ -13,6 +15,7 @@ import com.learn.zsh.internetlearn.utils.NetLogs;
 public class FragmentLearnUI extends FragmentActivity {
     private static final String TAG = NetLogs.NETLOG + "FragmentLearnUI";
     private FragmentUIExtension mUIExtension;
+    private View mContianView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +25,9 @@ public class FragmentLearnUI extends FragmentActivity {
     }
 
     private void initSource(){
-        mUIExtension = new FragmentUIExtension(this);
-
+        mUIExtension = new FragmentUIExtension(this/*getSupportFragmentManager()*/);
+        mContianView = findViewById(R.id.parent_container_view);
+        mUIExtension.initAndSetButtonClickListener(mContianView);
     }
 
     @Override
@@ -32,6 +36,7 @@ public class FragmentLearnUI extends FragmentActivity {
         if(mUIExtension == null){
             initSource();
         }
+        mUIExtension.addFragment();
     }
 
     @Override

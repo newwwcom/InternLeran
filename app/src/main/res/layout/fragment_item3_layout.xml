@@ -3,10 +3,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0088ff">
+    android:background="#ffa200">
 
     <TextView
-        android:id="@+id/fragment2_show"
+        android:id="@+id/fragment3_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

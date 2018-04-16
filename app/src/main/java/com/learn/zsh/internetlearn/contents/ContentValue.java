@@ -24,6 +24,7 @@ public class ContentValue {
     public static final Class BACKGROUND1_SERVICE = BackgroundService.class;
     public static final Class BACKGROUND2_SERVICE = Background2Service.class;
 
+    public static final int TOAST_SHOW_TIME = 600;
     public static final int REQUEST_TIMEOUT = 1500;
     public static final int CONN_TIMEOUT = 1500;
     public static final String HEAD_KEY_NAME = "Connection";
