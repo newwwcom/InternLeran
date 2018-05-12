@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.learn.zsh.internetlearn.R;
-import com.learn.zsh.internetlearn.contents.ContentValue;
+import com.learn.zsh.contents.ContentValue;
 import com.learn.zsh.internetlearn.extension.UIExtension;
 import com.learn.zsh.internetlearn.service.ServiceBinder;
 import com.learn.zsh.internetlearn.utils.NetLogs;

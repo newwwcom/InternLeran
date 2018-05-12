@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn.contents;
+package com.learn.zsh.contents;
 
 /**
  * Created by zhoushaohua on 2018/3/25.

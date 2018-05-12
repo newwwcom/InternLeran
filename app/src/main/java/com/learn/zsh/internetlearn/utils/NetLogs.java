@@ -49,6 +49,14 @@ public class NetLogs {
         Log.d(tag, msg);
     }
 
+    public static void w(String tag, String msg){
+        if(logInfoInvalid(tag, msg)) {
+            defaultLog();
+            return;
+        }
+        Log.w(tag, msg);
+    }
+
     public static void e(String tag, String msg){
         if(logInfoInvalid(tag, msg)) {
             defaultLog();

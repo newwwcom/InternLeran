@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn.contents;
+package com.learn.zsh.contents;
 
 import com.learn.zsh.internetlearn.service.Background2Service;
 import com.learn.zsh.internetlearn.service.BackgroundService;
@@ -20,6 +20,10 @@ public class ContentValue {
     public static final String CONTENTCHARSET = "UTF-8";
     public static final String DEFAULT_TIPS = "Get nothing.";
     public static final int CONN_SUCCES = 200;
+    public static final long IMAGE_DISKCACHE_SIZE = 1024 * 1024 * 50;
+    public static final int DISK_CACHE_INDEX = 0;
+    public static final int IO_BUFFER_SIZE = 1024 * 8;
+
 
     public static final Class BACKGROUND1_SERVICE = BackgroundService.class;
     public static final Class BACKGROUND2_SERVICE = Background2Service.class;

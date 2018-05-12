@@ -3,7 +3,7 @@ package com.learn.zsh.internetlearn.utils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.learn.zsh.internetlearn.contents.ContentValue;
+import com.learn.zsh.contents.ContentValue;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;

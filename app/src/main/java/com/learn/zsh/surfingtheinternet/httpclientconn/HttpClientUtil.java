@@ -1,7 +1,7 @@
 package com.learn.zsh.surfingtheinternet.httpclientconn;
 
 import com.learn.zsh.internetlearn.utils.NetLogs;
-import com.learn.zsh.internetlearn.contents.ContentValue;
+import com.learn.zsh.contents.ContentValue;
 import com.learn.zsh.internetlearn.utils.ProcessInfoUtil;
 
 import org.apache.http.HttpEntity;
@@ -32,7 +32,7 @@ import java.util.List;
 public class HttpClientUtil {
     private static final String TAG = NetLogs.NETLOG + HttpClientUtil.class.getName();
 
-    public static HttpClient createHttpClient(){
+    private static HttpClient createHttpClient(){
         HttpParams params = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(params, ContentValue.REQUEST_TIMEOUT);
         HttpConnectionParams.setSoTimeout(params, ContentValue.CONN_TIMEOUT);
