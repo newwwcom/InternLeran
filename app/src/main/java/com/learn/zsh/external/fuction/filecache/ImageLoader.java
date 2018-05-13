@@ -2,10 +2,10 @@ package com.learn.zsh.external.fuction.filecache;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.NetworkOnMainThreadException;
 import android.support.annotation.NonNull;
 import android.support.v4.util.LruCache;
 import android.widget.ImageView;
@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import com.learn.zsh.contents.ContentValue;
 import com.learn.zsh.external.fuction.filecache.utils.FileUtil;
 import com.learn.zsh.external.fuction.filecache.utils.ValuesTransformUtil;
+import com.learn.zsh.internetlearn.R;
 import com.learn.zsh.internetlearn.utils.NetLogs;
 import com.learn.zsh.mylibrary.devkit.cache.DiskLruCache;
+//import com.learn.zsh.external.fuction.filecache.devkit.DiskLruCache;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -49,6 +51,9 @@ public class ImageLoader {
     private final static int MAXIMUM_POOL_SIZE = CORE_POOL_SIZE * 2 + 1;
     private final static long KEEP_ALIVE = 10L;
 
+    private final static int IMAGE_TAG_KEY_URI = R.id.imageloader_uri;
+    private final static int MESSAGE_HANDLER_RESULT = 1;
+
     private final static ThreadFactory loadImageThreadFactory = new ThreadFactory() {
         //AtomicInteger是一个提供原子操作的Integer类，通过线程安全的方式操作加减;
         //使用场景: AtomicInteger提供原子操作来进行Integer的使用，因此十分适合高并发情况下的使用。
@@ -70,7 +75,14 @@ public class ImageLoader {
     private Handler mImageHandler = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(Message msg) {
-            super.handleMessage(msg);
+            LoaderResult result = (LoaderResult) msg.obj;
+            ImageView imageView = result.imageView;
+            String uri = (String) imageView.getTag(IMAGE_TAG_KEY_URI);
+            if(uri.equals(result.url)){
+                imageView.setImageBitmap(result.bitmap);
+            } else {
+                NetLogs.w(TAG, "set bitmap bitmap, but url has changed,ignored!");
+            }
         }
     };
 
@@ -109,6 +121,34 @@ public class ImageLoader {
         }
     }
 
+    public void bindImageView(final String uri, final ImageView image){
+        bindImageView(uri, image, 0, 0);
+    }
+
+    public void bindImageView(final String uri, final ImageView image, final int reqWidth, final int reqHeight){
+        NetLogs.begin(TAG, "bindImageView");
+        image.setTag(IMAGE_TAG_KEY_URI, uri);
+        Bitmap bitmap = loadBitmapFromMemoryCache(ValuesTransformUtil.hashKeyFromUrl(uri));
+        if(bitmap != null){
+            image.setImageBitmap(bitmap);
+            return;
+        }
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Bitmap bitmap = loadBitmap(uri, reqWidth, reqHeight);
+                if (bitmap != null){
+                    LoaderResult imageResult = new LoaderResult(uri, bitmap, image);
+                    mImageHandler.obtainMessage(MESSAGE_HANDLER_RESULT, imageResult).sendToTarget();
+                }
+            }
+        };
+
+        IMAGE_LOADER_THREAD_POOL.execute(runnable);
+        NetLogs.end(TAG, "bindImageView");
+    }
+
     public void addBitmapToMemoryCache(String key, Bitmap bitmap){
         if(getBitmapCacheFromCache(key) == null){
             mMemoryCache.put(key, bitmap);
@@ -119,8 +159,9 @@ public class ImageLoader {
         return mMemoryCache.get(key);
     }
 
-    private Bitmap loadBitmap(String url, int reqWidth, int reqHeight){
-        final String hashKey = ValuesTransformUtil.hashKeyFromUrl(url);
+    private Bitmap loadBitmap(String url, int reqWidth, int reqHeight) {
+        NetLogs.begin(TAG, "loadBitmap");
+        String hashKey = ValuesTransformUtil.hashKeyFromUrl(url);
         //可以直接调用getBitmapCacheFromCache(hashKey)；如下方法可读性好些，流程会清晰些
         Bitmap bitmap = loadBitmapFromMemoryCache(hashKey);
         if(bitmap != null){
@@ -137,7 +178,7 @@ public class ImageLoader {
 
             bitmap = loadBitmapFromInternet(url, reqWidth, reqHeight);
             NetLogs.d(TAG, "load image from internet, url : " + url);
-        } catch (Exception e) {
+        } catch (IOException e) {
             NetLogs.e(TAG, "loadBitmap error, info is : " + e.toString());
         }
 
@@ -145,7 +186,7 @@ public class ImageLoader {
             NetLogs.w(TAG, "encounter error, diskLruCache is not created.");
             bitmap = downLoadBitmapFromUrl(url);
         }
-
+        NetLogs.end(TAG, "loadBitmap");
         return bitmap;
     }
 
@@ -157,16 +198,17 @@ public class ImageLoader {
     }
 
     private Bitmap loadBitmapFromInternet(String url, int reqWidth, int reqHeight) throws IOException {
+        NetLogs.begin(TAG, "loadBitmapFromInternet");
         if(Looper.myLooper() == Looper.getMainLooper()){
-            NetLogs.e(TAG, "Load image in mainThread, it's not recommended!");
+            NetLogs.w(TAG, "Load image in mainThread, it's not recommended!");
         }
 
         if(mDiskLruCache == null){
             return null;
         }
+        String hashKey = ValuesTransformUtil.hashKeyFromUrl(url);
+        DiskLruCache.Editor editor = mDiskLruCache.edit(hashKey);
 
-        final String hashKey = ValuesTransformUtil.hashKeyFromUrl(url);
-        final DiskLruCache.Editor editor = mDiskLruCache.edit(hashKey);
         if(editor != null){
             OutputStream fo = editor.newOutputStream(ContentValue.DISK_CACHE_INDEX);
             if(downBitmapToStream(url, fo)){
@@ -176,10 +218,12 @@ public class ImageLoader {
             }
             mDiskLruCache.flush();
         }
+        NetLogs.end(TAG, "loadBitmapFromInternet");
         return loadBitmapFromDiskLruCache(hashKey, reqWidth, reqHeight);
     }
 
     private Bitmap loadBitmapFromDiskLruCache(String hashKey, int reqWidth, int reqHeight) throws IOException {
+        NetLogs.begin(TAG, "loadBitmapFromDiskLruCache");
         if(Looper.myLooper() == Looper.getMainLooper()){
            NetLogs.e(TAG, "Load image in mainThread, it's not recommended!");
         }
@@ -187,7 +231,6 @@ public class ImageLoader {
         if(mDiskLruCache == null){
             return null;
         }
-
         Bitmap bitmap = null;
         final DiskLruCache.Snapshot snapshot = mDiskLruCache.get(hashKey);
         if(snapshot != null){
@@ -198,10 +241,12 @@ public class ImageLoader {
                 addBitmapToMemoryCache(hashKey, bitmap);
             }
         }
+        NetLogs.end(TAG, "loadBitmapFromDiskLruCache");
         return bitmap;
     }
 
     private boolean downBitmapToStream(String url, OutputStream fo) throws IOException {
+        NetLogs.begin(TAG, "downBitmapToStream");
         HttpURLConnection urlConnection = null;
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
@@ -212,7 +257,7 @@ public class ImageLoader {
             in = new BufferedInputStream(urlConnection.getInputStream(), ContentValue.IO_BUFFER_SIZE);
             out = new BufferedOutputStream(fo, ContentValue.IO_BUFFER_SIZE);
             int line;
-            while((line = in.read()) != 0){
+            while((line = in.read()) != -1){
                 out.write(line);
             }
             return true;
@@ -226,28 +271,43 @@ public class ImageLoader {
             }
             FileUtil.closeStream(in);
             FileUtil.closeStream(out);
+            NetLogs.end(TAG, "downBitmapToStream");
         }
-
         return false;
     }
 
-    private Bitmap downLoadBitmapFromUrl(String url) throws NetworkOnMainThreadException {
-        if(Looper.myLooper() == Looper.getMainLooper()){
-            NetLogs.e(TAG, "Load image in mainThread, it's not recommended!");
+    private Bitmap downLoadBitmapFromUrl(String uri) {
+        Bitmap bitmap = null;
+        HttpURLConnection urlConnection = null;
+        BufferedInputStream in = null;
+        try {
+            URL url = new URL(uri);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            in = new BufferedInputStream(urlConnection.getInputStream(), ContentValue.IO_BUFFER_SIZE);
+            bitmap = BitmapFactory.decodeStream(in);
+        } catch (MalformedURLException e) {
+            NetLogs.e(TAG, "downBitmapToStream MalformedURLException error, info is : " + e.toString());
+        } catch (IOException e) {
+            NetLogs.e(TAG, "downBitmapToStream IOException error, info is : " + e.toString());
+        }finally {
+            if(urlConnection != null){
+                urlConnection.disconnect();
+            }
+            FileUtil.closeStream(in);
         }
-        return null;
+        return bitmap;
     }
 
 
     private static class LoaderResult{
-        public String mUrl;
-        public Bitmap mBitmap;
-        public ImageView mImageView;
+        public String url;
+        public Bitmap bitmap;
+        public ImageView imageView;
 
         public LoaderResult(String url, Bitmap bitmap, ImageView imageView){
-            this.mUrl = url;
-            this.mBitmap = bitmap;
-            this.mImageView  = imageView;
+            this.url = url;
+            this.bitmap = bitmap;
+            this.imageView  = imageView;
         }
     }
 

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="select_bar_height">30dip</dimen>
     <dimen name="bar_container_height">50dip</dimen>
+    <dimen name="space_length">5dip</dimen>
 </resources>

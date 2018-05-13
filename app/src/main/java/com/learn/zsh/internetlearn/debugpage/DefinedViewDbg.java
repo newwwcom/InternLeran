@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.learn.zsh.internetlearn.R;
-import com.learn.zsh.internetlearn.listview.MenuDebugAdapter;
+import com.learn.zsh.internetlearn.viewextension.MenuDebugAdapter;
 import com.learn.zsh.internetlearn.utils.NetLogs;
 
 /**

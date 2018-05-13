@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn.listview;
+package com.learn.zsh.internetlearn.viewextension;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 import com.learn.zsh.internetlearn.R;
 import com.learn.zsh.internetlearn.utils.NetLogs;
-
-import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by zhoushaohua on 2018/4/1.

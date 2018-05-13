@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/space_length">
+    <!-- stretchMode属性值的作用是设置GridView中的条目以什么缩放模式去填充剩余空间 -->
+    <!--numColumns: 表示有多少列，如果设置为auto_fit，将根据columnWidth和Spacing来自动计算 -->
+    <GridView
+        android:id="@+id/photo_wall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:listSelector="@android:color/transparent"
+        android:horizontalSpacing="@dimen/space_length"
+        android:verticalSpacing="@dimen/space_length"
+        android:numColumns="3"
+        android:stretchMode="columnWidth" />
+
+</LinearLayout>

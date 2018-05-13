@@ -12,7 +12,7 @@
     <string name="get_debug">get测试</string>
     <string name="post_debug">post测试</string>
     <string name="down_image">图片下载</string>
-    <string name="image_down_for_gallery">多图下载</string>
+    <string name="image_down_for_gallery">照片墙</string>
     <string name="down_images">下载图片</string>
     <string name="set_image">设置图片</string>
     <string name="set_bitmap">设置图片</string>

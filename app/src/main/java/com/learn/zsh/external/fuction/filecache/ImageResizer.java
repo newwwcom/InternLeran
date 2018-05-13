@@ -34,14 +34,19 @@ public class ImageResizer {
     }
 
     private int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        //没有指定要求宽高时，采样率直接返回“1”，若有指定，请要注意采样率的值，过大会只出现为图片一角（看到的是纯色图片）
+        if (reqWidth == 0 || reqHeight == 0) {
+            return 1;
+        }
         int calculateSize = 1;
         final int viewOriginWidth  = options.outWidth;
         final int viewOriginHeight = options.outHeight;
+        NetLogs.d(TAG, "origin, w = " + viewOriginWidth + " h = " + viewOriginHeight);
         if(viewOriginWidth > reqWidth || viewOriginHeight > reqHeight){
             final int halfWidth  = viewOriginWidth / 2;
             final int halfHeight = viewOriginHeight / 2;
-            while ((halfWidth / calculateSize) > reqWidth && (halfHeight / calculateSize) > reqHeight){
-                //calculateSize =  calculateSize << 1;
+            while ((halfWidth / calculateSize) >= reqWidth && (halfHeight / calculateSize) >= reqHeight){
+                //calculateSize *=  2;
                 calculateSize <<= 1;
             }
         }

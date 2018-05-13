@@ -39,9 +39,13 @@ public class FileUtil {
         return statFs.getBlockSizeLong() * statFs.getAvailableBlocksLong();
     }
 
-    public static void closeStream(Closeable stream) throws IOException {
+    public static void closeStream(Closeable stream) {
         if(stream != null){
-            stream.close();
+            try {
+                stream.close();
+            } catch (IOException e) {
+                NetLogs.e(TAG, "closeStream error, info is : " + e.toString());
+            }
         }
     }
 

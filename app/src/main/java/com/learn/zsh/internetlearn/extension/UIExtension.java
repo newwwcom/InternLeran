@@ -226,7 +226,7 @@ public class UIExtension implements View.OnClickListener {
     public void setImageGalleryAdapter(){
         if(mParentView == null)
             return;
-        Gallery gallery = mParentView.findViewById(R.id.gallery_for_image);
+        //Gallery gallery = mParentView.findViewById(R.id.gallery_for_image);
         //gallery.setAdapter(new UIAdapter(mContext));
     }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <!-- ImageView的Scaletype决定了图片在View上显示时的样子，如进行何种比例的缩放，及显示图片的整体还是部分，等等
+         https://blog.csdn.net/buaaroid/article/details/49360779
+    -->
+    <com.learn.zsh.internetlearn.userdefined.SquareImageViewItem
+        android:id="@+id/photo_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image_default"
+        android:scaleType="centerCrop"/>
+
+</LinearLayout>
