@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn;
+package com.learn.zsh.internetlearn.debugpage;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

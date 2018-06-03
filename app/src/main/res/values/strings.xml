@@ -30,11 +30,15 @@
     <string name="bind_service1">绑定服务1</string>
     <string name="item_ui">菜单选项</string>
     <string name="fragment_ui_show">Fragment ui show</string>
+
     <string name="fragment_debug">Fragment</string>
     <string name="fragement">碎片调试</string>
-    <string name="talk_view">消息</string>
-    <string name="contacts_view">联系人</string>
-    <string name="something_view">动态</string>
+    <string name="network_debug_view">网络</string>
+    <string name="userdefined_debug_view">自定义</string>
+    <string name="photo_debug_view">照片墙</string>
+    <string name="service_debug_view">服务</string>
+
+    <string name="fragment_thread_tips">调试多线程界面</string>
 
 </resources>
 

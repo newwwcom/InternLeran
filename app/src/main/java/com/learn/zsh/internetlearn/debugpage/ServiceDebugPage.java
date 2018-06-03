@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.learn.zsh.internetlearn.R;
@@ -22,7 +21,7 @@ import java.util.Set;
  * Created by zhoushaohua on 2018/3/31.
  */
 
-public class ServiceDebugPage extends AppCompatActivity {
+public class ServiceDebugPage extends BaseNetUIActivity {
     private static final String TAG = NetLogs.NETLOG + ServiceDebugPage.class.getSimpleName();
     private UIExtension mUIExtension;
     private Button mStartService1, mStopService1, mStartService2, mStopService2;

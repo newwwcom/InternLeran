@@ -3,15 +3,10 @@ package com.learn.zsh.internetlearn.debugpage;
 import android.os.Bundle;
 import android.widget.GridView;
 
-import com.learn.zsh.contents.ContentValue;
-import com.learn.zsh.internetlearn.BaseNetUIActivity;
 import com.learn.zsh.internetlearn.R;
 import com.learn.zsh.internetlearn.extension.UIExtension;
 import com.learn.zsh.internetlearn.utils.NetLogs;
 import com.learn.zsh.internetlearn.viewextension.PhotoWallAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zhoushaohua on 2018/3/25.

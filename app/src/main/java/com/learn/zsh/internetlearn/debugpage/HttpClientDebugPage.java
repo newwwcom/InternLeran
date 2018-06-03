@@ -1,7 +1,6 @@
 package com.learn.zsh.internetlearn.debugpage;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,7 +15,7 @@ import java.util.Set;
  * Created by zhoushaohua on 2018/3/25.
  */
 
-public class HttpClientDebugPage extends AppCompatActivity {
+public class HttpClientDebugPage extends BaseNetUIActivity {
     private static final String TAG = NetLogs.NETLOG + HttpClientDebugPage.class.getSimpleName();
     private View mContentView;
 

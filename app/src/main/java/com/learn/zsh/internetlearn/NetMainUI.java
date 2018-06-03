@@ -1,12 +1,11 @@
 package com.learn.zsh.internetlearn;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.learn.zsh.internetlearn.debugpage.BaseNetUIActivity;
 import com.learn.zsh.internetlearn.extension.UIExtension;
 import com.learn.zsh.internetlearn.utils.NetLogs;
-import com.learn.zsh.mylibrary.devkit.ProcessorFactory;
 
 import java.util.HashSet;
 import java.util.Set;

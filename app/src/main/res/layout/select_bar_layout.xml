@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/bar_select_container"
@@ -21,17 +20,22 @@
     这就很容易理解，出现"layout"就是控件对整个布局的操作
     -->
     <RadioButton
-        android:id="@+id/radio_talkview"
+        android:id="@+id/rb_http_dbg"
         style="@style/radio_button_style"
-        android:text="@string/talk_view" />
+        android:text="@string/network_debug_view" />
 
     <RadioButton
-        android:id="@+id/radio_contacts"
+        android:id="@+id/rb_definedview_dbg"
         style="@style/radio_button_style"
-        android:text="@string/contacts_view" />
+        android:text="@string/userdefined_debug_view" />
 
     <RadioButton
-        android:id="@+id/radio_more"
+        android:id="@+id/rb_photoview_dbg"
         style="@style/radio_button_style"
-        android:text="@string/something_view" />
+        android:text="@string/photo_debug_view" />
+
+    <RadioButton
+        android:id="@+id/rb_service_dbg"
+        style="@style/radio_button_style"
+        android:text="@string/service_debug_view" />
 </RadioGroup>

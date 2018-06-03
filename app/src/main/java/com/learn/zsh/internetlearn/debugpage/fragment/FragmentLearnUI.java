@@ -19,15 +19,15 @@ public class FragmentLearnUI extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.fragment_ui_layout);
-        setContentView(R.layout.dynamics_add_fragment_layout);
+        setContentView(R.layout.fragment_container_new);
         initSource();
     }
 
     private void initSource(){
-        mUIExtension = new FragmentUIExtension(this/*getSupportFragmentManager()*/);
+        mUIExtension = new FragmentUIExtension(this);
         mContianView = findViewById(R.id.parent_container_view);
-        mUIExtension.initAndSetButtonClickListener(mContianView);
+        mUIExtension.bindFragment();
+        mUIExtension.initView(mContianView);
     }
 
     @Override
@@ -36,7 +36,6 @@ public class FragmentLearnUI extends FragmentActivity {
         if(mUIExtension == null){
             initSource();
         }
-        mUIExtension.addFragment();
     }
 
     @Override

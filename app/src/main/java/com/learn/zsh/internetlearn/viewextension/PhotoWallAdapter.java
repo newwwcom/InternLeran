@@ -2,7 +2,6 @@ package com.learn.zsh.internetlearn.viewextension;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,6 @@ public class PhotoWallAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        NetLogs.i(TAG, "getCount mUrList.size : " + mUrList.size());
         return mUrList.size();
     }
 
@@ -70,9 +68,6 @@ public class PhotoWallAdapter extends BaseAdapter {
         ImageView imageView = viewHold.imageView;
         final String tag = (String)imageView.getTag();
         final String uri = getItem(position);
-        NetLogs.i(TAG, "getView, tag : " + tag);
-        NetLogs.i(TAG, "getView, uri : " + uri);
-        //imageView.setImageDrawable(mDefaultBitmapDrawable);
         if(!uri.equals(tag)){
             imageView.setImageDrawable(mDefaultBitmapDrawable);
         }
