@@ -190,8 +190,6 @@ public class ImageLoader {
         return bitmap;
     }
 
-
-
     private Bitmap loadBitmapFromMemoryCache(String hashKey){
         Bitmap loadBitmap = getBitmapCacheFromCache(hashKey);
         return loadBitmap;
