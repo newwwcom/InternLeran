@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn.debugpage;
+package com.learn.zsh.internetlearn.pageview;
 
 import android.os.Bundle;
 import android.view.View;

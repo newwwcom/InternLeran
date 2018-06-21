@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn.debugpage;
+package com.learn.zsh.internetlearn.pageview;
 
 import android.content.ComponentName;
 import android.content.ServiceConnection;

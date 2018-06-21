@@ -3,7 +3,7 @@ package com.learn.zsh.internetlearn;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.learn.zsh.internetlearn.debugpage.BaseNetUIActivity;
+import com.learn.zsh.internetlearn.pageview.BaseNetUIActivity;
 import com.learn.zsh.internetlearn.extension.UIExtension;
 import com.learn.zsh.internetlearn.utils.NetLogs;
 

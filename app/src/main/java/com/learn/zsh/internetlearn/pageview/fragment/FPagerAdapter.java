@@ -1,4 +1,4 @@
-package com.learn.zsh.internetlearn.debugpage.fragment;
+package com.learn.zsh.internetlearn.pageview.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +9,6 @@ import com.learn.zsh.internetlearn.utils.NetLogs;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by zhoushaohua on 2018/6/3.

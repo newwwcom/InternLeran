@@ -1,9 +1,7 @@
-package com.learn.zsh.internetlearn.debugpage.fragment;
+package com.learn.zsh.internetlearn.pageview.fragment;
 
-import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -28,7 +26,6 @@ import java.util.Map;
 
 public class FragmentUIExtension implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener {
     private static final String TAG = NetLogs.NETLOG + "FragmentUIExtension";
-    private View mView;
     private RadioGroup radiocontainer;
     private RadioButton mNetButton, muserViewButton, mPhotoViewButton, mServiceButton;
     private Map<Integer, Fragment> fragments = new HashMap<>();
@@ -41,8 +38,6 @@ public class FragmentUIExtension implements RadioGroup.OnCheckedChangeListener, 
     }
 
     public void initView(View view){
-        this.mView = view;
-
         radiocontainer = view.findViewById(R.id.include_parent_container_view);
         radiocontainer.setOnCheckedChangeListener(this);
         mNetButton = view.findViewById(R.id.rb_http_dbg);

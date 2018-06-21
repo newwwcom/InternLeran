@@ -18,13 +18,13 @@
         <activity android:name=".NetMainUI"
             android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="zsh.debug.action.NetMainUI" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.HttpClientDebugPage"
+        <activity android:name="com.learn.zsh.internetlearn.pageview.HttpClientDebugPage"
             android:label="@string/httpclient_dbg">
             <intent-filter>
                 <action android:name="zsh.debug.action.HTTPCLIENTDEBUG_PC" />
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.ImageDownDebugPage"
+        <activity android:name="com.learn.zsh.internetlearn.pageview.ImageDownDebugPage"
             android:label="@string/image_down_for_gallery">
             <intent-filter>
                 <action android:name="zsh.debug.action.IMAGEDOWNDEBUG_PC" />
@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.DefinedViewDbg"
+        <activity android:name="com.learn.zsh.internetlearn.pageview.DefinedViewDbg"
             android:label="@string/user_defind_view">
             <intent-filter>
                 <action android:name="zsh.debug.action.USERDEFINDVIEW_PC" />
@@ -51,7 +51,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.learn.zsh.internetlearn.debugpage.ServiceDebugPage"
+        <activity android:name="com.learn.zsh.internetlearn.pageview.ServiceDebugPage"
             android:label="@string/service_life_debug">
             <intent-filter>
                 <action android:name="zsh.debug.action.SERVICEPAGE_PC" />
@@ -67,12 +67,12 @@
         <service android:name=".service.Background2Service"
             android:enabled="true"
             android:exported="true"/>
-        <activity android:name=".debugpage.fragment.FragmentLearnUI"
+        <activity android:name=".pageview.fragment.FragmentLearnUI"
             android:label="@string/fragment_debug">
             <intent-filter>
-                <action android:name="zsh.debug.action.FRAGMENT_PC" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
