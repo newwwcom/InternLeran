@@ -1,5 +1,7 @@
 # InternLeran
 ------------------------------------------分割线-------------------------------------------------------
+图片缓存的开放工具库：https://github.com/nostra13/Android-Universal-Image-Loader
+
 先让我们看一下GridView里面一些“特有”属性吧：
 android:numColumns  /*列数，可以直接指定1列，2列---N列   *auto_fit 自动指定列数：columnWidth和Spacing来计算。比如宽100x，columnWidth为列宽10px，Spacing为间隙5px，那么用总的去除以每一个item的宽，就能得到能放下几行，进行一系列计算。*/
 android:columnWidth //每列的宽度，也就是Item的宽度
